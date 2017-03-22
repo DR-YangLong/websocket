@@ -1,0 +1,40 @@
+spring:
+  profiles.active: develop
+---
+spring:
+  profiles: develop
+security:
+  user:
+    name: admin
+    password: 123456
+    role: admin
+  ignored:
+      - "/index*"
+      - "/"
+      - "/static/**"
+      - "/webjars/**"
+      - "**/**.js"
+      - "**/**.css"
+      - "**/**.html"
+      - "/ws/all/**"
+      - "/ws/guest/**"
+      - "/topic/all/**"
+      - "/guest-notify/**"
+      - "/user/queue/guest"
+      - "/queue/guest/**"
+      - "/queue/auth/**"
+# 端口
+server:
+      port: "8085"
+      session:
+        timeout: "7200"
+      servlet-path: "/*"
+      tomcat:
+        protocol-header: "x-forwarded-proto"
+      use-forward-headers: "true"
+#logger 配置
+logging:
+  config: "classpath:logback.xml"
+banner:
+  location: caonima.txt
+debug: true
